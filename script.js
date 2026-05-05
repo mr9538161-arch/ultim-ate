@@ -182,11 +182,12 @@ function openModal(serviceId) {
 
     // Build categories HTML
     modalCategoriesContainer.innerHTML = ''; // clear old
+    const fragment = document.createDocumentFragment();
     data.categories.forEach(cat => {
         const catCard = document.createElement('div');
         catCard.className = 'category-card';
         catCard.innerHTML = `
-            <img src="${cat.img}" alt="${cat.title}">
+            <img src="${cat.img}" alt="${cat.title}" loading="lazy" decoding="async">
             <div class="overlay">
                 <i class="${cat.icon}"></i>
                 <h3>${cat.title}</h3>
@@ -194,8 +195,9 @@ function openModal(serviceId) {
             </div>
         `;
         catCard.onclick = () => catCard.classList.toggle('active');
-        modalCategoriesContainer.appendChild(catCard);
+        fragment.appendChild(catCard);
     });
+    modalCategoriesContainer.appendChild(fragment);
 
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
