@@ -496,10 +496,11 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(15px);
-    background-color: rgba(11, 15, 25, 0.9);
+    /* إزالة backdrop-filter لمنع التعليق وتحسين سرعة الفتح */
+    background-color: rgba(6, 9, 16, 0.98);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
 }
 
 .modal.show {
@@ -522,7 +523,8 @@ body {
     position: relative;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.2);
     transform: scale(0.8) translateY(50px);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform;
 }
 
 /* Custom scrollbar for modal */
@@ -866,6 +868,10 @@ footer p {
 
     .modal-content {
         padding: 2.5rem 1.5rem;
+        /* Reduce shadow processing on mobile to prevent lag */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 215, 0, 0.1);
+        /* Use linear transition for faster execution on mobile GPUs */
+        transition: transform 0.3s ease-out;
     }
 
     .close-modal {
