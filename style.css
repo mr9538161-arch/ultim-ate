@@ -875,6 +875,23 @@ footer p {
         height: 35px;
         font-size: 20px;
     }
+
+    /* Make category details always visible on mobile without tapping */
+    .category-card .overlay {
+        background: rgba(0, 0, 0, 0.75);
+        justify-content: center;
+    }
+
+    .category-card p {
+        max-height: 150px;
+        opacity: 1;
+        margin-top: 10px;
+    }
+
+    .category-card i {
+        opacity: 1;
+        transform: translateY(0) scale(1.05);
+    }
 }
 
 /* Designer Credit Styling */
@@ -938,6 +955,7 @@ footer p {
     }
 
     .category-card {
-        height: 220px;
+        height: 260px;
+        /* Increased to fit the always-visible text */
     }
 }
